@@ -1,10 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 // const cors = require('cors')
-const studentRouter = require("./routes/student");
+const studentRouter = require("./routes/controller");
 
-const url =
-  "mongodb+srv://goodellysushrut:9381128949@cluster0.w5fmtyk.mongodb.net/College";
+const url ="mongodb://localhost:27020,localhost:27021,localhost:27022/cbit?replicaSet=m101"
 const app = express();
 mongoose.connect(url);
 const con = mongoose.connection;
@@ -15,7 +14,7 @@ con.on("open", () => {
 // app.use(cors())
 app.use(express.json());
 
-app.use("/student", studentRouter);
+app.use("/models", studentRouter);
 app.listen(9000, () => {
   console.log("Server started on 9000");
 });

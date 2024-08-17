@@ -13,11 +13,16 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  eligible: {
+  promoted: {
     type: Boolean,
     required: true,
     default: false,
   },
+  certifications:{
+    type: Number,
+    required:true,
+    default: 0
+  }
 });
 
 module.exports = mongoose.model("model", studentSchema);

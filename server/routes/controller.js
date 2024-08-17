@@ -35,7 +35,8 @@ router.post("/", async (req, res) => {
     rollno: req.body.rollno,
     name: req.body.name,
     section: req.body.section,
-    eligible: req.body.eligible,
+    promoted: req.body.promoted,
+    certifications: req.body.certifications,
   });
 
   try {
@@ -48,11 +49,11 @@ router.post("/", async (req, res) => {
 
 router.patch("/", async (req, res) => {
   let rollno=req.body.rollno;
-  let eligible=req.body.eligible;
-  console.log(rollno,eligible)
+  let promoted=req.body.promoted;
+  console.log(rollno,promoted)
   try {
     const student = await Student.findOne({ rollno:rollno });
-    student.eligible = req.body.eligible;
+    student.promoted = req.body.promoted;
     const a1 = await student.save();
     res.send(a1);
   } catch (err) {
@@ -64,7 +65,7 @@ router.patch("/:id", async (req, res) => {
   try {
     let id = req.params.id;
     const student = await Student.findById(id);
-    student.eligible = req.body.eligible;
+    student.promoted = req.body.promoted;
     const a1 = await student.save();
     res.send(a1);
   } catch (err) {
